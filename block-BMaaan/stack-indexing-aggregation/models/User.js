@@ -9,4 +9,11 @@ let userSchema = new Schema({
   reputation: { type: Number, default: 0 }
 }, { timestamps: true });
 
+userSchema.index({email: 1});
+
+db.data.aggregate({$group: {
+  _id: "$reputation",
+  total: {sum: 1}
+}});
+
 module.exports = Schema;

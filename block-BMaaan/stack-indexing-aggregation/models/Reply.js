@@ -11,4 +11,6 @@ let replySchema = new Schema({
   downVotes: { type: Number, default: 0 }
 }, { timestamps: true });
 
+replySchema.index({ upVotes: 1 });
+
 module.exports = Schema;

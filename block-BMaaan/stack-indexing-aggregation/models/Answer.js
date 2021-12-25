@@ -10,4 +10,11 @@ let answerSchema = new Schema({
   downVotes: { type: Number, default: 0 }
 }, { timestamps: true });
 
+answerSchema.index({upVotes: 1});
+
+db.data.aggregate({$group: {
+  _id: "$answer",
+  count: {sum: 1}
+}});
+
 module.exports = Schema;
